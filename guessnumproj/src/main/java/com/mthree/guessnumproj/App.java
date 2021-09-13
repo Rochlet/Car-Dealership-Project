@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mthree.cardealershipproject.controller;
+package com.mthree.guessnumproj;
 
 /**
  *
  * @author ArmandoGonzalez
  */
-public interface controller {
+public class App {
     
 }
