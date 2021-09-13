@@ -6,6 +6,7 @@
 package com.mthree.guessnumproj.dto;
 
 import java.util.List;
+import java.util.ArrayList;
 
 /**
  *
@@ -21,6 +22,7 @@ public class Game {
     //id required to create game object
     public Game(int id) {
         this.id = id;
+        this.rounds = new ArrayList<>();
     }
     
     //only getter for id

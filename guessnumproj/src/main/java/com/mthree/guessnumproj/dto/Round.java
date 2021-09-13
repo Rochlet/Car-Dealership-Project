@@ -13,7 +13,7 @@ public class Round {
     private final LocalDateTime guessTime;
     private int exactMatchCount;
     private int partialMatch;
-    private int playerGuess;
+    private String playerGuess;
     
     //guess time is set when round is created
     public Round(LocalDateTime guessTime) {
@@ -42,11 +42,11 @@ public class Round {
         this.partialMatch = partialMatch;
     }
 
-    public int getPlayerGuess() {
+    public String getPlayerGuess() {
         return playerGuess;
     }
 
-    public void setPlayerGuess(int playerGuess) {
+    public void setPlayerGuess(String playerGuess) {
         this.playerGuess = playerGuess;
     }
 
