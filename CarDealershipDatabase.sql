@@ -75,7 +75,7 @@ create table messages(
 	message text not null
 );
 create table purchases(
-	purchace_id int auto_increment,
+	purchase_id int auto_increment,
 		constraint pk_purchases primary key(purchase_id),
 	customer_name varchar(100) not null,
     phone_number varchar(15) not null,
@@ -86,9 +86,9 @@ create table purchases(
     purchase_type_id int not null,
 		constraint fk_purchase_types foreign key(purchase_type_id) references puchase_types(purchase_type_id),
 	user_id int not null,
-		constraint fk_users foreign key(user_id) references users(user_id),
+		constraint fk_users2 foreign key(user_id) references users(user_id),
 	vehicle_id int not null,
-		constraint fk_vehicles foreign key(vehicle_id) references vehicles(vehicle_id),
+		constraint fk_vehicles2 foreign key(vehicle_id) references vehicles(vehicle_id),
 	purchase_price dec(9,2) not null,
     purchase_date date not null
 );
