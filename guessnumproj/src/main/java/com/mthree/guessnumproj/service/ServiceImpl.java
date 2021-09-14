@@ -78,6 +78,16 @@ public class ServiceImpl implements Service{
         }
         return true;
     }
+    
+    //modifies string to be 3 chars long
+    @Override
+    public String addPlayerInitials(String playerInitials, Game game) {
+        while(playerInitials.length() < 3)
+            playerInitials += "_";
+        playerInitials = playerInitials.substring(0,3);
+        game.setPlayer(playerInitials);
+        return game.getPlayer();
+    }
 
     @Override
     public boolean isPlayerWin(Game game) {

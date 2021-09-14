@@ -27,6 +27,9 @@ public interface Service {
     //determine if game answer or guess is valid format
     boolean isNumStrValid(String numStr);
     
+    //add player three character initials
+    String addPlayerInitials(String playerInitials, Game game);
+    
     //check if player wins
     boolean isPlayerWin(Game game);
     
