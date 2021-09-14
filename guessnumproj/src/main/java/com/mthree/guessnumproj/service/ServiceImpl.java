@@ -29,7 +29,10 @@ public class ServiceImpl implements Service{
     @Override
     public Game startgame() {
         int gameId = this.rnd.nextInt() % (100000 - 0 + 1);
-        return new Game(gameId);
+        Game game = new Game(gameId);
+        //set answer before returning game object
+        game.setAnswer(this.generateNumStr());
+        return game;
     }
 
     //create round and set round attributes
@@ -115,5 +118,20 @@ public class ServiceImpl implements Service{
             if(answer.indexOf(num) != -1)
                 count++;
         return count;
+    }
+    
+    //generate an answer for game object
+    private String generateNumStr() {
+        String nums = "0123456789";
+        int strIdx;
+        String numStr = "";
+        char currChar;
+        while(numStr.length() < 4) {
+            strIdx = this.rnd.nextInt(9);
+            currChar = nums.charAt(strIdx);
+            if(!numStr.contains(currChar+""))
+                numStr += currChar;
+        }
+        return numStr;
     }
 }
