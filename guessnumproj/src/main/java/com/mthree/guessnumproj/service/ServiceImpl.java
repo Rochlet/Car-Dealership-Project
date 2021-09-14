@@ -39,10 +39,15 @@ public class ServiceImpl implements Service{
     @Override
     public Round guess(Game game, String guess) {
         Round round = new Round(LocalDateTime.now());
-        game.getRounds().add(round);
-        round.setPlayerGuess(guess);
-        round.setExactMatchCount(this.calcExactMatch(guess, game));
-        round.setPartialMatch(this.calcPartialMatch(guess, game));
+        List<Round> rounds = game.getRounds();
+        if( !this.isPlayerWin(game)) {
+            rounds.add(round);
+            round.setPlayerGuess(guess);
+            round.setExactMatchCount(this.calcExactMatch(guess, game));
+            round.setPartialMatch(this.calcPartialMatch(guess, game));
+            //should return round here
+        }
+        //exception should be thrown here
         return round;
     }
 
@@ -77,6 +82,7 @@ public class ServiceImpl implements Service{
     @Override
     public boolean isPlayerWin(Game game) {
         List<Round> rounds = game.getRounds();
+        if(rounds.size() == 0) return false;
         Round lastRound = rounds.get(rounds.size()-1);
         int exactMatch = lastRound.getExactMatchCount();
         return exactMatch == 4;

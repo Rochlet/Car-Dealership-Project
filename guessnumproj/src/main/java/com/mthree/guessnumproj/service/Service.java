@@ -18,10 +18,10 @@ public interface Service {
     //starts a new round automatically
     Round guess(Game game, String guess);
     
-    //return exact match value (from last round)
+    //return exact match value 
     int getExactMatchVal(String guess, Game game);
     
-    //return partial match value(from last round)
+    //return partial match value
     int getPartialMatchVal(String guess, Game game);
     
     //determine if game answer or guess is valid format
