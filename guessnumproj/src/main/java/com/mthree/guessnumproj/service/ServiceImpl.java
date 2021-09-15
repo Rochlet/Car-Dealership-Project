@@ -17,6 +17,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 /**
  *
  * @author ArmandoGonzalez
@@ -107,13 +108,13 @@ public class ServiceImpl implements Service{
     }
 
     @Override
-    public Game getGame(int gameId) {
+    public Game getGame(int gameId) throws DataAccessException{
         try {
-            this.gameDao.getGameById(gameId);
+            return this.gameDao.getGameById(gameId);
         }
         catch(Exception dae){     
+            throw new DataAccessException("Could not retrieve game object.") {};
         }
-        return new Game(0);
     }
 
     @Override
