@@ -25,12 +25,12 @@ public class GameDaoImpl implements GameDao {
     final String updateGame = "Insert into rounds(roundId, gameId,guessTime,exactMatch,partialMatch,playerGuessCount  VALUES (?,?,?,?,?,?))";
     
     @Autowired
-    public GameDaoImpl(JdbcTemplate jdbc) throws DataAccessException {
+    public GameDaoImpl(JdbcTemplate jdbc){
         this.jdbc = jdbc;
-        List<Game> allGames = getAllGames();
-        for(Game g : allGames){
-            System.out.println(g);
-        }
+//        List<Game> allGames = getAllGames();
+//        for(Game g : allGames){
+//            System.out.println(g);
+//        }
     }
     @Override
     public List<Game> getAllGames()throws DataAccessException{    
