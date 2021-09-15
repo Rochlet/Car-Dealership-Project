@@ -5,19 +5,16 @@
  */
 package com.mthree.guessnumproj;
 import com.mthree.guessnumproj.controller.*;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  *
  * @author ArmandoGonzalez
  */
+
+@SpringBootApplication
 public class App {
     public static void main(String[] args) {
-
-        AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext();
-        appContext.scan("com.mthree.guessnumproj");
-        appContext.refresh();
-
-        Controller controller = appContext.getBean("Controller", Controller.class);
-        //controller.run();
+       SpringApplication.run(App.class, args);
     }
 }
