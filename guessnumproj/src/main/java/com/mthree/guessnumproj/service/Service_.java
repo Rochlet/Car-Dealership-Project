@@ -5,14 +5,13 @@
  */
 package com.mthree.guessnumproj.service;
 import com.mthree.guessnumproj.dto.*;
-import com.mthree.guessnumproj.dao.*;
 import java.util.List;
 import org.springframework.dao.DataAccessException;
 /**
  *
  * @author ArmandoGonzalez
  */
-public interface Service {
+public interface Service_ {
     
     //generates a new game
     Game startgame();
