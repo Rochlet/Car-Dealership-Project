@@ -6,12 +6,17 @@
 package com.mthree.guessnumproj.service;
 
 import com.mthree.guessnumproj.dto.*;
+import com.mthree.guessnumproj.dao.*;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
+import org.springframework.beans.factory.annotation.Autowired;
 /**
  *
  * @author ArmandoGonzalez
@@ -19,12 +24,15 @@ import java.util.Random;
 public class ServiceImpl implements Service{
     private Random rnd = new Random();
     
-    /*Dao dao;
+    GameDao gameDao;
+    RoundDao roundDao;
 
-    public ServiceImpl(Dao dao) {
-        this.dao = dao;
+    @Autowired
+    public ServiceImpl(GameDao dao, RoundDao roundDao) {
+        this.gameDao = gameDao;
+        this.roundDao = roundDao;
     }
-    */
+    
     
     @Override
     public Game startgame() {
@@ -100,14 +108,22 @@ public class ServiceImpl implements Service{
 
     @Override
     public Game getGame(int gameId) {
-        //this.dao.getgame(gameId);
+        try {
+            this.gameDao.getGameById(gameId);
+        }
+        catch(Exception dae){     
+        }
         return new Game(0);
     }
 
     @Override
-    public List<Round> getRounds(int gameId) {
-       //this.dao.getRounds(gameId);
-       return new ArrayList<Round>();
+    public List<Round> getRounds(int gameId)  {
+        try {
+            this.roundDao.getAllRoundsByGameId(gameId);
+        }
+        catch(Exception dae){     
+        }
+        return new ArrayList<Round>();
     }
     
     
