@@ -46,18 +46,25 @@ public class ServiceImpl implements Service{
 
     //create round and set round attributes
     @Override
-    public Round guess(Game game, String guess) {
-        Round round = new Round(LocalDateTime.now());
-        List<Round> rounds = game.getRounds();
-        if( !this.isPlayerWin(game)) {
-            rounds.add(round);
-            round.setPlayerGuess(guess);
-            round.setExactMatchCount(this.calcExactMatch(guess, game));
-            round.setPartialMatch(this.calcPartialMatch(guess, game));
-            //should return round here
+    public Round guess(int gameID, String guess)  throws DataAccessException {
+        try {
+            Round round = new Round(LocalDateTime.now());
+            Game game = this.gameDao.getGameById(gameID);
+            List<Round> rounds = game.getRounds();
+            if( !this.isPlayerWin(game)) {
+                rounds.add(round);
+                round.setPlayerGuess(guess);
+                round.setExactMatchCount(this.calcExactMatch(guess, game));
+                round.setPartialMatch(this.calcPartialMatch(guess, game));
+                //should return round here
         }
         //exception should be thrown here
         return round;
+        }
+        catch(Exception dae){     
+            throw new DataAccessException("Could not retrieve game object.") {};
+        }
+        
     }
 
     @Override
@@ -116,15 +123,25 @@ public class ServiceImpl implements Service{
             throw new DataAccessException("Could not retrieve game object.") {};
         }
     }
-
+    
     @Override
-    public List<Round> getRounds(int gameId)  {
+    public List<Game> getAllGames() throws DataAccessException {
         try {
-            this.roundDao.getAllRoundsByGameId(gameId);
+            return this.gameDao.getAllGames();
         }
         catch(Exception dae){     
+            throw new DataAccessException("Could not retrieve game object.") {};
         }
-        return new ArrayList<Round>();
+    }
+
+    @Override
+    public List<Round> getRounds(int gameId) throws DataAccessException {
+        try {
+            return this.roundDao.getAllRoundsByGameId(gameId);
+        }
+        catch(Exception dae){    
+            throw new DataAccessException("Could not retrieve game object.") {};
+        }
     }
     
     

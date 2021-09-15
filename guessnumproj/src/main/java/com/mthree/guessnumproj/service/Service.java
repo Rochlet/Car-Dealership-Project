@@ -5,7 +5,9 @@
  */
 package com.mthree.guessnumproj.service;
 import com.mthree.guessnumproj.dto.*;
+import com.mthree.guessnumproj.dao.*;
 import java.util.List;
+import org.springframework.dao.DataAccessException;
 /**
  *
  * @author ArmandoGonzalez
@@ -16,7 +18,7 @@ public interface Service {
     Game startgame();
     
     //starts a new round automatically
-    Round guess(Game game, String guess);
+    Round guess(int gameId, String guess) throws DataAccessException;
     
     //return exact match value 
     int getExactMatchVal(String guess, Game game);
@@ -34,8 +36,11 @@ public interface Service {
     boolean isPlayerWin(Game game);
     
     //get game
-    Game getGame(int gameId);
+    Game getGame(int gameId) throws DataAccessException;
+    
+    //get all games
+    List<Game> getAllGames() throws DataAccessException;
     
     //get Rounds from a game
-    List<Round> getRounds(int gameId);
+    List<Round> getRounds(int gameId) throws DataAccessException;
 }
