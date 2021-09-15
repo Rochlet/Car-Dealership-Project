@@ -29,7 +29,7 @@ public class Game {
     }
 
     public Game() {
-
+         this.id = 1;
     }
 
     //only getter for id
@@ -70,4 +70,10 @@ public class Game {
         this.player = player;
     }
 
+    @Override
+    public String toString() {
+        return "Game{" + "id=" + id + ", answer=" + answer + ", rounds=" + rounds + ", inProgress=" + inProgress + ", player=" + player + '}';
+    }
+
+    
 }

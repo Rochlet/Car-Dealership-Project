@@ -19,15 +19,18 @@ import org.springframework.stereotype.Repository;
 public class GameDaoImpl implements GameDao {
 
     private final JdbcTemplate jdbc;
-    final String getAllGames = "SELECT * FROM game";
-    final String getGameById = "SELECT * FROM game WHERE gameId = ?";
-    final String addGame = "INSERT INTO game(gameId,inProgress,answer,player) VALUES (?,?,?,?)";
-    final String updateGame = "Insert into round(roundId, gameId,guessTime,exactMatch,partialMatch,playerGuessCount  VALUES (?,?,?,?,?,?))";
+    final String getAllGames = "SELECT * FROM games";
+    final String getGameById = "SELECT * FROM games WHERE gameId = ?";
+    final String addGame = "INSERT INTO games(gameId,inProgress,answer,player) VALUES (?,?,?,?)";
+    final String updateGame = "Insert into rounds(roundId, gameId,guessTime,exactMatch,partialMatch,playerGuessCount  VALUES (?,?,?,?,?,?))";
     
     @Autowired
-    public GameDaoImpl(JdbcTemplate jdbc) {
-               System.out.println("ok");
+    public GameDaoImpl(JdbcTemplate jdbc) throws DataAccessException {
         this.jdbc = jdbc;
+        List<Game> allGames = getAllGames();
+        for(Game g : allGames){
+            System.out.println(g);
+        }
     }
     @Override
     public List<Game> getAllGames()throws DataAccessException{    
@@ -62,7 +65,7 @@ public class GameDaoImpl implements GameDao {
         @Override
         public Game mapRow(ResultSet rs, int index) throws SQLException {
             Game game = new Game();
-//            game.setId(rs.getInt("gameId"));
+   //         game.setId(rs.getInt("gameId"));
             game.setInProgress(rs.getBoolean("inProgress"));
             game.setAnswer(rs.getString("answer"));
             game.setPlayer(rs.getString("player"));

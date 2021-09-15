@@ -19,9 +19,9 @@ import org.springframework.dao.DataAccessException;
 public class RoundDaoImpl implements RoundDao {
 
     private final JdbcTemplate jdbc;
-    final String getRoundById = "SELECT * FROM round WHERE roundId = ?";
-    final String addRound = "INSERT INTO round VALUES (?,?,?,?,?,?)";
-    final String getAllRoundsByGameId = "SELECT * FROM round WHERE gameId = ?";
+    final String getRoundById = "SELECT * FROM rounds WHERE roundId = ?";
+    final String addRound = "INSERT INTO rounds VALUES (?,?,?,?,?,?)";
+    final String getAllRoundsByGameId = "SELECT * FROM rounds WHERE gameId = ?";
 
     @Autowired
     public RoundDaoImpl(JdbcTemplate jdbc) {

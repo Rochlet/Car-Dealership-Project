@@ -88,4 +88,9 @@ public class Round {
         this.playerGuess = playerGuess;
     }
 
+    @Override
+    public String toString() {
+        return "Round{" + "guessTime=" + guessTime + ", exactMatchCount=" + exactMatchCount + ", partialMatch=" + partialMatch + ", playerGuess=" + playerGuess + ", roundId=" + roundId + ", gameId=" + gameId + ", playerGuessCount=" + playerGuessCount + '}';
+    }
+
 }
