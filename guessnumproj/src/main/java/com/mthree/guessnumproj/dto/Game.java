@@ -24,6 +24,10 @@ public class Game {
         this.id = id;
         this.rounds = new ArrayList<>();
     }
+
+    public Game() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     //only getter for id
 
@@ -49,7 +53,7 @@ public class Game {
         this.rounds = rounds;
     }
 
-    public boolean isInProgress() {
+    public boolean getInProgress() {
         return inProgress;
     }
 
