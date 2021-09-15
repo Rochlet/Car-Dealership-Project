@@ -25,6 +25,7 @@ public class RoundDaoImpl implements RoundDao {
 
     @Autowired
     public RoundDaoImpl(JdbcTemplate jdbc) {
+         System.out.println("okay");
         this.jdbc = jdbc;
     }
 

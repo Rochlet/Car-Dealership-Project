@@ -39,6 +39,9 @@ public class ServiceImpl implements Service_{
     @Override
     public Round guess(Round r){
         int gameID = r.getGameId();
+        if(getGame(gameID).getAnswer() == null){
+            return guess(gameID, "0000");
+        }
         String guess = getGame(gameID).getAnswer();
         return guess(gameID, guess);
     }
@@ -118,6 +121,7 @@ public class ServiceImpl implements Service_{
             return this.gameDao.getGameById(gameId);
         }
         catch(Exception dae){     
+        
             throw new DataAccessException("Could not retrieve game object.") {};
         }
     }

@@ -26,6 +26,7 @@ public class GameDaoImpl implements GameDao {
     
     @Autowired
     public GameDaoImpl(JdbcTemplate jdbc) {
+               System.out.println("ok");
         this.jdbc = jdbc;
     }
     @Override

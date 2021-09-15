@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.mthree.guessnumproj.service.Service_;
+import org.springframework.http.MediaType;
 
 
 /**
@@ -23,17 +24,15 @@ import com.mthree.guessnumproj.service.Service_;
 public class Controller {
     @Autowired
     Service_ service;
-    
-    @GetMapping("/io")
-    public String avx() {
-        return "YO";
-    }
-    @PostMapping("/begin")
+
+    @GetMapping("/begin")
     public Game createNewGame(){
         return service.startgame();
     }
   
-    @PostMapping("/guess")
+    @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE},
+            path = "/guess")
     public Round makeAGuess(@RequestBody Round round){
         return service.guess(round);
     }

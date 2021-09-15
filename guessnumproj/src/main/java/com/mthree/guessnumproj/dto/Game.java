@@ -13,30 +13,31 @@ import java.util.ArrayList;
  * @author ArmandoGonzalez
  */
 public class Game {
-    private final int id;
+
+    private int id;
     private String answer;
     private List<Round> rounds;
     private boolean inProgress;
     private String player;
-    
+
+
     //id required to create game object
     public Game(int id) {
+ 
         this.id = id;
         this.rounds = new ArrayList<>();
     }
 
     public Game() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    //only getter for id
 
+    }
+
+    //only getter for id
     public int getId() {
         return id;
     }
-    
-    //getters and setters
 
+    //getters and setters
     public String getAnswer() {
         return answer;
     }
@@ -68,5 +69,5 @@ public class Game {
     public void setPlayer(String player) {
         this.player = player;
     }
-    
+
 }
