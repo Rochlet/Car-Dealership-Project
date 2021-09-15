@@ -4,17 +4,51 @@
  * and open the template in the editor.
  */
 package com.mthree.guessnumproj.dto;
+
 import java.time.LocalDateTime;
+
 /**
  *
  * @author ArmandoGonzalez
  */
 public class Round {
-    private final LocalDateTime guessTime;
+
+    private LocalDateTime guessTime;
     private int exactMatchCount;
     private int partialMatch;
     private String playerGuess;
-    
+    private int roundId;
+    private int gameId;
+    private int playerGuessCount;
+
+    public Round() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public int getPlayerGuessCount() {
+        return playerGuessCount;
+    }
+
+    public void setPlayerGuessCount(int playerGuessCount) {
+        this.playerGuessCount = playerGuessCount;
+    }
+
+    public int getRoundId() {
+        return roundId;
+    }
+
+    public void setRoundId(int roundId) {
+        this.roundId = roundId;
+    }
+
+    public int getGameId() {
+        return gameId;
+    }
+
+    public void setGameId(int gameId) {
+        this.gameId = gameId;
+    }
+
     //guess time is set when round is created
     public Round(LocalDateTime guessTime) {
         this.guessTime = guessTime;
@@ -24,7 +58,11 @@ public class Round {
     public LocalDateTime getGuessTime() {
         return guessTime;
     }
-    
+
+    public void setGuessTime(LocalDateTime guessTime) {
+       this.guessTime = guessTime;
+    }
+
     //setters and getters
     public int getExactMatchCount() {
         return exactMatchCount;
