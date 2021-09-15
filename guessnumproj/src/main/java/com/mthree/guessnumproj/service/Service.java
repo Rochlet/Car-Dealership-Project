@@ -43,4 +43,7 @@ public interface Service {
     
     //get Rounds from a game
     List<Round> getRounds(int gameId) throws DataAccessException;
+    
+    // use this method to fetch out the gameId and user guess from dao
+    Round guess(Round r);
 }

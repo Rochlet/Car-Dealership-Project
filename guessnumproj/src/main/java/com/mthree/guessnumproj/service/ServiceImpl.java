@@ -44,7 +44,13 @@ public class ServiceImpl implements Service{
         return game;
     }
 
-    //create round and set round attributes
+    @Override
+    public Round guess(Round r){
+        int gameID = r.getGameId();
+        String guess = getGame(gameID).getAnswer();
+        return guess(gameID, guess);
+    }
+    
     @Override
     public Round guess(int gameID, String guess)  throws DataAccessException {
         try {
