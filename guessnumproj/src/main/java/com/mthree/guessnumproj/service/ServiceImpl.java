@@ -1,21 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mthree.guessnumproj.service;
 
 import com.mthree.guessnumproj.dto.*;
 import com.mthree.guessnumproj.dao.*;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.stereotype.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;

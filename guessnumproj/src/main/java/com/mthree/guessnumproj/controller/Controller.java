@@ -12,16 +12,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.mthree.guessnumproj.service.Service_;
 
+
 /**
  *
  * @author Eric
  */
 @RestController
 @RequestMapping("/api")
+
 public class Controller {
     @Autowired
     Service_ service;
-
+    
+    @GetMapping("/io")
+    public String avx() {
+        return "YO";
+    }
     @PostMapping("/begin")
     public Game createNewGame(){
         return service.startgame();
@@ -36,7 +42,11 @@ public class Controller {
     public List<Game> getAllGames() {
         return service.getAllGames();
     }
-        
+    @GetMapping("/game/{game_id}")
+    public Game getGameById(@PathVariable("game_id") int gameId) {
+        return service.getGame(gameId);
+    }
+    
     @GetMapping("/rounds/{game_id}")
     public List<Round> getRoundsForGame(@PathVariable("game_id") int gameId) {
         return service.getRounds(gameId);
